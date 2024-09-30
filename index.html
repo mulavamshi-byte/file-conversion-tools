@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Conversion Tools</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Load External Libraries -->
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="https://unpkg.com/docx@7.0.0/build/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pptxgenjs/3.3.0/pptxgen.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip-utils/0.0.2/jszip-utils.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.3.0/dist/pptxgen.bundle.js"></script> <!-- PptxGenJS -->
+
+</head>
+<body>
+    <header>
+        <h1>Welcome to Any2Any</h1>
+        <nav>
+            <ul>
+                <li><a href="#">PDF Tools</a></li>
+                <li><a href="#">File Conversions</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Tools We Offer</h2>
+        <div class="tool-card">
+            <h3>PDF Compression</h3>
+            <p>Compress PDF files with a single click!</p>
+            <form id="pdf-compression-form">
+                <label for="pdf-file">Upload PDF:</label>
+                <input type="file" id="pdf-file" accept="application/pdf">
+                <button type="submit">Compress PDF</button>
+            </form>
+        </div>
+
+        <div class="tool-card">
+            <h3>DOCX to PDF</h3>
+            <p>Convert DOCX to PDF format online.</p>
+            <form id="docx-to-pdf-form">
+                <label for="docx-file">Upload DOCX:</label>
+                <input type="file" id="docx-file" accept=".docx">
+                <button type="submit">Convert to PDF</button>
+            </form>
+        </div>
+
+        <div class="tool-card">
+            <h3>PDF to DOCX</h3>
+            <p>Convert PDF to DOCX format online.</p>
+            <form id="pdf-to-docx-form">
+                <label for="pdf-to-docx-file">Upload PDF:</label>
+                <input type="file" id="pdf-to-docx-file" accept="application/pdf">
+                <button type="submit">Convert to DOCX</button>
+            </form>
+        </div>
+
+        <div class="tool-card">
+            <h3>Excel to PDF</h3>
+            <p>Convert Excel (XLSX) to PDF format online.</p>
+            <form id="excel-to-pdf-form">
+                <label for="excel-file">Upload Excel (XLSX):</label>
+                <input type="file" id="excel-file" accept=".xlsx">
+                <button type="submit">Convert to PDF</button>
+            </form>
+        </div>
+
+        <div class="tool-card">
+            <h3>PDF to Excel</h3>
+            <p>Convert PDF to Excel format online.</p>
+            <form id="pdf-to-excel-form">
+                <label for="pdf-to-excel-file">Upload PDF:</label>
+                <input type="file" id="pdf-to-excel-file" accept="application/pdf">
+                <button type="submit">Convert to Excel</button>
+            </form>
+        </div>
+        <!-- PowerPoint to PDF -->
+        <div class="tool-card">
+            <h3>PowerPoint to PDF</h3>
+            <p>Convert PowerPoint (PPTX) to PDF format online.</p>
+            <form id="pptx-to-pdf-form">
+                <label for="pptx-file">Upload PowerPoint (PPTX):</label>
+                <input type="file" id="pptx-file" accept=".pptx">
+                <button type="submit">Convert to PDF</button>
+            </form>
+        </div>
+         <!-- PDF to PowerPoint -->
+         <div class="tool-card">
+            <h3>PDF to PowerPoint</h3>
+            <p>Convert PDF to PowerPoint (PPTX) format online.</p>
+            <form id="pdf-to-pptx-form">
+                <label for="pdf-to-pptx-file">Upload PDF:</label>
+                <input type="file" id="pdf-to-pptx-file" accept="application/pdf">
+                <button type="submit">Convert to PowerPoint</button>
+            </form>
+        </div>
+
+        <div id="output"></div>
+        <div id="docx-output"></div>
+        <div id="pdf-to-docx-output"></div>
+        <div id="excel-to-pdf-output"></div>
+        <div id="pdf-to-excel-output"></div>
+        <div id="output"></div>
+        <div id="pptx-output"></div>
+    </section>
+    
+    <script src="js/script.js"></script>
+</body>
+</html>
