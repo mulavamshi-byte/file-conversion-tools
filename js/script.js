@@ -315,3 +315,14 @@ document.getElementById("pdf-to-pptx-form").addEventListener("submit", function 
 
     reader.readAsArrayBuffer(file);
 });
+
+window.addEventListener("scroll", function() {
+    const footer = document.getElementById('footer');
+    
+    // Check if the user has scrolled to the bottom
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10) {
+        footer.classList.add('visible');  // Show the footer
+    } else {
+        footer.classList.remove('visible');  // Hide the footer if not at the bottom
+    }
+});

@@ -40,7 +40,7 @@ section {
     box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
 }
 
-footer {
+/*footer {
     background-color: #333;
     color: #fff;
     text-align: center;
@@ -48,7 +48,8 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
-}
+}*/
+
 form {
     margin: 20px 0;
     padding: 10px;
@@ -83,4 +84,25 @@ button:hover {
 #output, #pdf-to-docx-output {
     margin-top: 20px;
     font-family: Arial, sans-serif;
+}
+.content {
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+/* Footer styles - initially hidden */
+#footer {
+    background-color: #1781eb;
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: none; /* Initially hide the footer */
+    font-family: Arial, sans-serif;
+}
+
+/* Footer visible when scrolled to bottom */
+#footer.visible {
+    display: block;
 }
