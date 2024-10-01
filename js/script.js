@@ -1,43 +1,3 @@
-// PDF Compression
-document.getElementById("pdf-compression-form").addEventListener("submit", async function (event) {
-    event.preventDefault();
-
-    const fileInput = document.getElementById("pdf-file");
-    if (!fileInput.files.length) {
-        alert("Please upload a PDF file.");
-        return;
-    }
-
-    const file = fileInput.files[0];
-    const reader = new FileReader();
-
-    reader.onload = async function () {
-        const arrayBuffer = reader.result;
-        const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
-
-        // Reduce the size of all embedded images (default compression)
-        const newPdfDoc = await PDFLib.PDFDocument.create();
-        const copiedPages = await newPdfDoc.copyPages(pdfDoc, pdfDoc.getPageIndices());
-        copiedPages.forEach((page) => newPdfDoc.addPage(page));
-
-        const compressedPdfBytes = await newPdfDoc.save();
-
-        // Create a Blob and trigger download
-        const blob = new Blob([compressedPdfBytes], { type: 'application/pdf' });
-        const blobUrl = URL.createObjectURL(blob);
-
-        const link = document.createElement('a');
-        link.href = blobUrl;
-        link.download = 'compressed.pdf';  // Ensure the file is named 'compressed.pdf'
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);  // Clean up the DOM after download
-        URL.revokeObjectURL(blobUrl);  // Release memory
-    };
-
-    reader.readAsArrayBuffer(file);
-});
-
 // DOCX to PDF Conversion
 document.getElementById("docx-to-pdf-form").addEventListener("submit", function (event) {
     event.preventDefault();
@@ -326,3 +286,216 @@ window.addEventListener("scroll", function() {
         footer.classList.remove('visible');  // Hide the footer if not at the bottom
     }
 });
+// Image to PDF Conversion
+document.getElementById("image-to-pdf-form").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const fileInput = document.getElementById("image-file");
+    if (!fileInput.files.length) {
+        alert("Please upload an image file.");
+        return;
+    }
+
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+        const imgData = event.target.result;
+        const doc = new window.jspdf.jsPDF();
+
+        doc.addImage(imgData, 'JPEG', 15, 40, 180, 160);  // Adjust image size
+        doc.save("converted.pdf");
+    };
+
+    reader.readAsDataURL(file);
+});
+
+// PDF to Image Conversion
+document.getElementById("pdf-to-image-form").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const fileInput = document.getElementById("pdf-file-to-image");
+    if (!fileInput.files.length) {
+        alert("Please upload a PDF file.");
+        return;
+    }
+
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+        const arrayBuffer = event.target.result;
+
+        const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
+        loadingTask.promise.then(function (pdf) {
+            pdf.getPage(1).then(function (page) {
+                const viewport = page.getViewport({ scale: 1.5 });
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                page.render(renderContext).promise.then(function () {
+                    canvas.toBlob(function (blob) {
+                        const link = document.createElement('a');
+                        link.href = URL.createObjectURL(blob);
+                        link.download = 'converted-image.png';
+                        link.click();
+                    });
+                });
+            });
+        });
+    };
+
+    reader.readAsArrayBuffer(file);
+});
+
+// JPG to PNG Conversion
+document.getElementById("jpg-to-png-form").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const fileInput = document.getElementById("jpg-file");
+    if (!fileInput.files.length) {
+        alert("Please upload a JPG image.");
+        return;
+    }
+
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+        const imgData = event.target.result;
+
+        const image = new Image();
+        image.src = imgData;
+        image.onload = function () {
+            const canvas = document.createElement("canvas");
+            const context = canvas.getContext("2d");
+            canvas.width = image.width;
+            canvas.height = image.height;
+            context.drawImage(image, 0, 0);
+
+            canvas.toBlob(function (blob) {
+                const link = document.createElement("a");
+                link.href = URL.createObjectURL(blob);
+                link.download = "converted.png";
+                link.click();
+            }, "image/png");
+        };
+    };
+
+    reader.readAsDataURL(file);
+});
+
+// PNG to JPG Conversion
+document.getElementById("png-to-jpg-form").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const fileInput = document.getElementById("png-file");
+    if (!fileInput.files.length) {
+        alert("Please upload a PNG image.");
+        return;
+    }
+
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+        const imgData = event.target.result;
+
+        const image = new Image();
+        image.src = imgData;
+        image.onload = function () {
+            const canvas = document.createElement("canvas");
+            const context = canvas.getContext("2d");
+            canvas.width = image.width;
+            canvas.height = image.height;
+            context.drawImage(image, 0, 0);
+
+            canvas.toBlob(function (blob) {
+                const link = document.createElement("a");
+                link.href = URL.createObjectURL(blob);
+                link.download = "converted.jpg";
+                link.click();
+            }, "image/jpeg");
+        };
+    };
+
+    reader.readAsDataURL(file);
+});
+
+// Image to Text (OCR) using Tesseract.js
+document.getElementById("image-to-text-form").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const fileInput = document.getElementById("ocr-image-file");
+    const outputDiv = document.getElementById("ocr-output");
+    if (!fileInput.files.length) {
+        alert("Please upload an image file.");
+        return;
+    }
+
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+        const imgData = event.target.result;
+
+        Tesseract.recognize(imgData, 'eng', { logger: (m) => console.log(m) })
+            .then(({ data: { text } }) => {
+                outputDiv.innerHTML = `<p>Extracted Text: ${text}</p>`;
+            })
+            .catch((error) => {
+                console.error("OCR Error:", error);
+                outputDiv.innerHTML = `<p>Error in extracting text.</p>`;
+            });
+    };
+
+    reader.readAsDataURL(file);
+});
+
+// HEIC to JPG/PNG Conversion
+// HEIC to JPG/PNG Conversion with Better Debugging
+document.getElementById("heic-to-image-form").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const fileInput = document.getElementById("heic-file");
+    const formatSelect = document.getElementById("heic-format");
+    const format = formatSelect.value;
+
+    if (!fileInput.files.length) {
+        alert("Please upload a HEIC image.");
+        return;
+    }
+
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+        heic2any({
+            blob: file,  // The HEIC file
+            toType: format === 'jpg' ? 'image/jpeg' : 'image/png',
+        }).then(function (conversionResult) {
+            // Handle the conversion result
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(conversionResult);
+            link.download = `converted.${format}`;
+            link.click();
+        }).catch(function (error) {
+            console.error("HEIC Conversion Error:", error);
+            alert("Error converting HEIC file: " + error.message);
+        });
+    };
+
+    reader.onerror = function (error) {
+        console.error("File Read Error:", error);
+        alert("Error reading HEIC file: " + error.message);
+    };
+
+    reader.readAsArrayBuffer(file);  // Read the file as an ArrayBuffer
+});
+

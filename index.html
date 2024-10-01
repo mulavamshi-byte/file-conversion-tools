@@ -1,129 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Conversion Tools</title>
+    <title>Best File Converter</title>
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
 
-    <!-- Load External Libraries -->
-    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
-    <script src="https://unpkg.com/docx@7.0.0/build/index.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pptxgenjs/3.3.0/pptxgen.bundle.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip-utils/0.0.2/jszip-utils.min.js"></script>
+        .header {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
 
-    <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.3.0/dist/pptxgen.bundle.js"></script> <!-- PptxGenJS -->
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
 
+        h1 {
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+
+        .conversion-options {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+            padding: 20px;
+            width: 250px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card h3 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .card a {
+            display: block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .card a:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            margin-top: 50px;
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+    
 </head>
-<body>
     <header>
         <h1>Welcome to Any2Any</h1>
         <nav>
             <ul>
-                <li><a href="#">PDF Tools</a></li>
-                <li><a href="#">File Conversions</a></li>
+                <li><a href="../all-html-pages/image-conversion-tools.html">Image Conversions</a></li>
+                <li><a href="../file-conversion-tools/all-html-pages/document-conversion-tools.html">Document Conversions</a></li>
+                <li><a href="../file-conversion-tools/all-html-pages/compression-tools.html">Compression Tools</a></li>
+                <li><a href="../file-conversion-tools/all-html-pages/video-conversion-tools.html">Video Conversions</a></li>
+                <li><a href="../file-conversion-tools/all-html-pages/audio-conversion-tools.html">Audio Conversions</a></li>
+                <li><a href="../file-conversion-tools/all-html-pages/archive-conversion-tools.html">Archive Conversions</a></li>
+                <li><a href="../file-conversion-tools/all-html-pages/ebook-conversion-tools.html">E-Book Conversions</a></li>
+                <li><a href="../file-conversion-tools/all-html-pages/code-and-markup-conversion-tools.html">Code and Markup Conversions</a></li>
             </ul>
         </nav>
     </header>
 
-    <section>
-        <h2>Tools We Offer</h2>
-        <div class="tool-card">
-            <h3>PDF Compression</h3>
-            <p>Compress PDF files with a single click!</p>
-            <form id="pdf-compression-form">
-                <label for="pdf-file">Upload PDF:</label>
-                <input type="file" id="pdf-file" accept="application/pdf">
-                <button type="submit">Compress PDF</button>
-            </form>
-        </div>
-
-        <div class="tool-card">
-            <h3>DOCX to PDF</h3>
-            <p>Convert DOCX to PDF format online.</p>
-            <form id="docx-to-pdf-form">
-                <label for="docx-file">Upload DOCX:</label>
-                <input type="file" id="docx-file" accept=".docx">
-                <button type="submit">Convert to PDF</button>
-            </form>
-        </div>
-
-        <div class="tool-card">
-            <h3>PDF to DOCX</h3>
-            <p>Convert PDF to DOCX format online.</p>
-            <form id="pdf-to-docx-form">
-                <label for="pdf-to-docx-file">Upload PDF:</label>
-                <input type="file" id="pdf-to-docx-file" accept="application/pdf">
-                <button type="submit">Convert to DOCX</button>
-            </form>
-        </div>
-
-        <div class="tool-card">
-            <h3>Excel to PDF</h3>
-            <p>Convert Excel (XLSX) to PDF format online.</p>
-            <form id="excel-to-pdf-form">
-                <label for="excel-file">Upload Excel (XLSX):</label>
-                <input type="file" id="excel-file" accept=".xlsx">
-                <button type="submit">Convert to PDF</button>
-            </form>
-        </div>
-
-        <div class="tool-card">
-            <h3>PDF to Excel</h3>
-            <p>Convert PDF to Excel format online.</p>
-            <form id="pdf-to-excel-form">
-                <label for="pdf-to-excel-file">Upload PDF:</label>
-                <input type="file" id="pdf-to-excel-file" accept="application/pdf">
-                <button type="submit">Convert to Excel</button>
-            </form>
-        </div>
-        <!-- PowerPoint to PDF -->
-        <div class="tool-card">
-            <h3>PowerPoint to PDF</h3>
-            <p>Convert PowerPoint (PPTX) to PDF format online.</p>
-            <form id="pptx-to-pdf-form">
-                <label for="pptx-file">Upload PowerPoint (PPTX):</label>
-                <input type="file" id="pptx-file" accept=".pptx">
-                <button type="submit">Convert to PDF</button>
-            </form>
-        </div>
-         <!-- PDF to PowerPoint -->
-         <div class="tool-card">
-            <h3>PDF to PowerPoint</h3>
-            <p>Convert PDF to PowerPoint (PPTX) format online.</p>
-            <form id="pdf-to-pptx-form">
-                <label for="pdf-to-pptx-file">Upload PDF:</label>
-                <input type="file" id="pdf-to-pptx-file" accept="application/pdf">
-                <button type="submit">Convert to PowerPoint</button>
-            </form>
-        </div>
-
-        <div id="output"></div>
-        <div id="docx-output"></div>
-        <div id="pdf-to-docx-output"></div>
-        <div id="excel-to-pdf-output"></div>
-        <div id="pdf-to-excel-output"></div>
-        <div id="output"></div>
-        <div id="pptx-output"></div>
-    </section>
-    
-    <script src="js/script.js"></script>
-
-    <div class="content"></div>
-        <p style="height: 300px;"></p>
+    <div class="header">
+        <h1>Welcome to the File Conversion Tool</h1>
+        <p>Select a file conversion type from the options below.</p>
     </div>
-<footer id="footer">
-        <div class="container">
-                <strong><span>" Developed by Vamshi-Mula, assisted by ChatGPT ♥ "</span></strong>
-                All Rights Reserved"
+
+    <div class="container">
+        <h1>Conversion Options</h1>
+        <div class="conversion-options">
+            <!-- MP4 to MP3 Conversion -->
+            <div class="card">
+                <h3>MP4 to MP3</h3>
+                <p>Convert your MP4 videos into MP3 audio format easily.</p>
+                <a href="mp4-to-mp3.html">Convert Now</a>
+            </div>
+
+            <!-- PDF Compression -->
+            <div class="card">
+                <h3>Compress PDF</h3>
+                <p>Reduce the size of your PDF files for easier sharing.</p>
+                <a href="pdf-compression.html">Compress Now</a>
+            </div>
+
+            <!-- Image to PDF Conversion -->
+            <div class="card">
+                <h3>Image to PDF</h3>
+                <p>Convert images into PDF format for better document management.</p>
+                <a href="image-to-pdf.html">Convert Now</a>
+            </div>
+
+            <!-- Add more conversion cards here -->
+            <div class="card">
+                <h3>DOCX to PDF</h3>
+                <p>Convert your Word documents into PDF format.</p>
+                <a href="docx-to-pdf.html">Convert Now</a>
+            </div>
+
+            <div class="card">
+                <h3>PDF to DOCX</h3>
+                <p>Turn PDF documents into editable DOCX files.</p>
+                <a href="pdf-to-docx.html">Convert Now</a>
             </div>
         </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Any2Any | All rights reserved</p>
     </footer>
 </body>
 </html>
