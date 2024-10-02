@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f5f5f5;
+}
+
+.upload-area {
+    width: 400px;
+    height: 300px;
+    border: 2px dashed #d3d3d3;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    transition: 0.3s;
+}
+
+.upload-area.dragging {
+    border-color: #000;
+    background-color: #f1f1f1;
+}
+
+.upload-area h2 {
+    font-size: 18px;
+    color: #555;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ff5a5f;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #e74c3c;
+}
+
+#fileName {
+    margin-top: 20px;
+    color: #333;
+}

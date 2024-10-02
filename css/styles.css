@@ -1,108 +1,99 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
-}
-
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
-    text-align: center;
-}
-
-nav ul {
-    list-style-type: none;
+    color: #333;
     margin: 0;
     padding: 0;
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 10px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-section {
+.header {
+    background-color: #1f7bde;
+    color: white;
     padding: 20px;
-}
-
-.tool-card {
-    background-color: #fff;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
-}
-
-/*footer {
-    background-color: #333;
-    color: #fff;
     text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}*/
+}
 
-form {
-    margin: 20px 0;
-    padding: 10px;
-    background-color: #f9f9f9;
+
+/* Navigation style */
+nav {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+.container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: #eef0f3;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #1269ec;
+    margin-bottom: 20px;
+    text-align: center;
+    
+}
+
+.conversion-options {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: white;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    padding: 20px;
+    width: 250px;
+    transition: transform 0.3s;
 }
 
-label {
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card h3 {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: #666;
+    font-size: 14px;
+}
+
+.card a {
     display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-}
-
-input[type="file"] {
-    margin-bottom: 10px;
-}
-
-button {
-    padding: 8px 15px;
+    margin-top: 15px;
+    padding: 10px 20px;
     background-color: #007BFF;
     color: white;
-    border: none;
+    text-decoration: none;
     border-radius: 5px;
-    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-button:hover {
+.card a:hover {
     background-color: #0056b3;
 }
 
-#output, #pdf-to-docx-output {
-    margin-top: 20px;
-    font-family: Arial, sans-serif;
-}
-.content {
-    padding: 20px;
-    background-color: #f0f0f0;
-}
-
-/* Footer styles - initially hidden */
-#footer {
-    background-color: #1781eb;
-    text-align: center;
+footer {
+    margin-top: 50px;
+    background-color: #333;
+    color: white;
     padding: 20px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    display: none; /* Initially hide the footer */
-    font-family: Arial, sans-serif;
+    text-align: center;
 }
 
-/* Footer visible when scrolled to bottom */
-#footer.visible {
-    display: block;
+footer p {
+    margin: 0;
 }
